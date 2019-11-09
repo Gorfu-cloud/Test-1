@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="com.test.pojo">
+	    <insert id="adduserLoginLog" parameterType="userLoginLog" >
+	        insert into tb_user_login_log ( userName ) values (#{userName})
+	    </insert>
+	    
+	    <delete id="deleteuserLoginLog" parameterType="userLoginLog" >
+	        delete from tb_user_login_log where pk_id= #{id}
+	    </delete>
+	    
+	    <select id="getuserLoginLog" parameterType="int" resultType="userLoginLog">
+	        select * from   tb_user_login_log  where pk_id= #{id}
+	    </select>
+
+	    <update id="updateuserLoginLog" parameterType="userLoginLog" >
+	        update tb_user_login_log set userName =#{userName} where pk_id=#{id}
+	    </update>
+	    <select id="listuserLoginLog" resultType="userLoginLog">
+	        select * from   tb_user_login_log
+	    </select>
+		<select id="listuserLoginLogByPage" parameterType="Page"
+							 resultType="userLoginLog">
+				select * from tb_user_login_log limit #{start},#{size}
+		</select>
+	</mapper>
+
